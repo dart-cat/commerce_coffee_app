@@ -1,5 +1,5 @@
 import 'package:coffee_app/models/coffee.dart';
-import 'package:coffee_app/pages/detail_card_page.dart';
+import 'package:coffee_app/pages/detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeTile extends StatelessWidget {
@@ -22,7 +22,7 @@ class CoffeeTile extends StatelessWidget {
         subtitle: Text(coffee.price),
         leading: InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailCard(
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(
                 title: coffee.name,
                 description: coffee.description,
                 id: coffee.id,

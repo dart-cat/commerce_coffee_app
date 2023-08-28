@@ -36,9 +36,12 @@ payment service here...
           child: Column(
             children: [
               //heading
-              const Text(
-                'Your Cart',
-                style: TextStyle(fontSize: 20),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Text(
+                  'Your Cart',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
 
               //list of cart items
