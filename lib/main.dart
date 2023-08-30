@@ -1,9 +1,12 @@
 import 'package:coffee_app/models/coffee_shop.dart';
 import 'package:coffee_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent,));
   runApp(const CofeeApp());
 }
 

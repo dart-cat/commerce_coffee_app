@@ -1,4 +1,8 @@
 import 'package:coffee_app/models/coffee.dart';
+<<<<<<< HEAD
+=======
+import 'package:coffee_app/pages/detail_screen.dart';
+>>>>>>> ec533fb0e5c69ca78905e8e43967818271667dde
 import 'package:flutter/material.dart';
 
 class CoffeeTile extends StatelessWidget {
@@ -19,7 +23,21 @@ class CoffeeTile extends StatelessWidget {
       child: ListTile(
         title: Text(coffee.name),
         subtitle: Text(coffee.price),
+<<<<<<< HEAD
         leading: Image.asset(coffee.imagePath),
+=======
+        leading: InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(
+                title: coffee.name,
+                description: coffee.description,
+                id: coffee.id,
+                price: coffee.price,
+                image: coffee.imagePath,
+              )));
+            },
+            child: Image.asset(coffee.imagePath)),
+>>>>>>> ec533fb0e5c69ca78905e8e43967818271667dde
         trailing: IconButton(icon: icon,
         onPressed: onPressed,
       ),
