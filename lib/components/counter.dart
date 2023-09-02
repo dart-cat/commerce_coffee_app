@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
-  const Counter({super.key});
+  final ValueChanged<int> onNumOfItemsChanged;
+  const Counter({super.key, required this.onNumOfItemsChanged});
 
   @override
   _CounterState createState() => _CounterState();
@@ -19,23 +20,26 @@ class _CounterState extends State<Counter> {
             if (numOfItems > 1) {
               setState(() {
                 numOfItems--;
+                widget.onNumOfItemsChanged(numOfItems);
               });
             }
           },
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal:10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             numOfItems.toString().padRight(2, 'x'),
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        buildOutlinedButton(icon: Icons.add,
+        buildOutlinedButton(
+            icon: Icons.add,
             press: () {
               setState(() {
                 if (numOfItems < 9) {
                   setState(() {
                     numOfItems++;
+                    widget.onNumOfItemsChanged(numOfItems);
                   });
                 }
               });

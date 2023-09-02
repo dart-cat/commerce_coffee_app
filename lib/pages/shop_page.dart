@@ -4,6 +4,8 @@ import 'package:coffee_app/models/coffee_shop.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'detail_screen.dart';
+
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
 
@@ -52,10 +54,19 @@ class _ShopPageState extends State<ShopPage> {
                               //get individual coffee
                               Coffee eachCoffee = value.coffeeShop[index];
                               //return the tile for this coffee
-                              return CoffeeTile(
-                                coffee: eachCoffee,
-                                icon: const Icon(Icons.add),
-                                onPressed: () => addToCart(eachCoffee),
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => DetailScreen(
+                                              eachCoffee: eachCoffee)));
+                                },
+                                child: CoffeeTile(
+                                  coffee: eachCoffee,
+                                  icon: const Icon(Icons.add),
+                                  onPressed: () => addToCart(eachCoffee),
+                                ),
                               );
                             }))
                   ],

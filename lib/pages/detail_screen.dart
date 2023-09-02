@@ -1,60 +1,85 @@
 import 'package:coffee_app/components/counter.dart';
 import 'package:coffee_app/components/dropdown.dart';
 import 'package:coffee_app/components/small_medium_large.dart';
+import 'package:coffee_app/models/coffee.dart';
+import 'package:coffee_app/models/coffee_shop.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+class DetailScreen extends StatefulWidget {
+  const DetailScreen({super.key, required this.eachCoffee});
+  final Coffee eachCoffee;
 
-class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key, this.title, this.id, this.description, this.image, this.price});
-  final title;
-  final id;
-  final description;
-  final image;
-  final price;
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  int numOfItems = 1;
+  num? price;
+
+  void changeNumOfItems(int newValue) {
+    setState(() {
+      numOfItems = newValue;
+      changeNumOfPrice();
+    });
+  }
+
+  void changeNumOfPrice() {
+    setState(() {
+      price = numOfItems * num.parse('${widget.eachCoffee.price}');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final height = size.height;
+    if (size.height > 600) {
+      final height = size.height * 0.3;
+    } else {
+      final height = size.height * 0.4;
+    }
     return Scaffold(
       backgroundColor: Colors.brown[300],
-        appBar:  AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.brown[300],
         elevation: 0.0,
         leading: IconButton(
-        onPressed: () => Navigator.pop(context),
-    icon: const Icon(
-    Icons.arrow_back,
-    color: Colors.white,
-    ),
-    ),
-    ),
-      body:
-      SingleChildScrollView(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: size.height,
+              height: size.height * 1.1,
               child: Stack(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: size.height * 0.3),
+                    margin: EdgeInsets.only(
+                        top: size.height > 600
+                            ? size.height * 0.3
+                            : size.height * 0.4),
                     padding: EdgeInsets.only(
-                      top: size.height * 0.145,
+                      top: size.height * 0.15,
                       left: 20.0,
                       right: 20.0,
                     ),
                     decoration: const BoxDecoration(
-
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20.0),
                           topRight: Radius.circular(20.0),
-                        )
-                    ),
+                        )),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(description),
+                        Text(widget.eachCoffee.description),
                         const SizedBox(
                           height: 10.0,
                         ),
@@ -62,8 +87,9 @@ class DetailScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${'Number of ' + title} \'s:'),
-                            const Counter(),
+                            Text(
+                                '${'Number of ${widget.eachCoffee.name}'} \'s:'),
+                            Counter(onNumOfItemsChanged: changeNumOfItems),
                           ],
                         ),
                         const SizedBox(
@@ -101,64 +127,76 @@ class DetailScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 15.0,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Hot',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                ),
-              ),
-              Text(
-               title ,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.0,
-                ),
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Row(
-                children: [
-                  RichText(
-                    text: TextSpan(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const TextSpan(text: 'Price\n'),
-                        TextSpan(
-                          text: '$price',
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        const Text(
+                          'Hot',
+                          style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
                           ),
                         ),
+                        Text(
+                          widget.eachCoffee.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium
+                              ?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30.0,
+                              ),
+                        ),
+                        // const SizedBox(
+                        //   height: 10.0,
+                        // ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 70.0),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    const TextSpan(text: 'Price\n'),
+                                    TextSpan(
+                                      text:
+                                          '${widget.eachCoffee.price}${widget.eachCoffee.currency}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineMedium
+                                          ?.copyWith(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.all(
+                                    MediaQuery.of(context).size.height * 0.02),
+                                child: Hero(
+                                  tag: '${widget.eachCoffee.id}',
+                                  child: Image.asset(
+                                    widget.eachCoffee.imagePath,
+                                    // fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
                       ],
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: Hero(
-                        tag: '$id',
-                        child: Image.asset(
-                            image,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
                   )
-                ],
-              )
-            ],
-          ),
-        )
                 ],
               ),
             ),
@@ -166,15 +204,17 @@ class DetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => {
-          Navigator.pop(context),
-          print('${'Added ' + title} to cart.'),
+        onPressed: () {
+          Provider.of<CoffeeShop>(context, listen: false)
+              .addItemToCart(widget.eachCoffee);
+          print('$numOfItems');
+          Navigator.pop(context);
         },
-        label: Text('Add to cart ($price)'),
+        label: Text(
+            'Add to cart (${price?.toStringAsFixed(2) ?? widget.eachCoffee.price}${widget.eachCoffee.currency})'),
         icon: const Icon(Icons.coffee),
         backgroundColor: Colors.brown[300],
       ),
     );
-
-}
+  }
 }
