@@ -1,5 +1,4 @@
 import 'package:coffee_app/models/coffee.dart';
-import 'package:coffee_app/pages/detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeTile extends StatelessWidget {
@@ -23,7 +22,7 @@ class CoffeeTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
         child: ListTile(
           title: Text(coffee.name),
-          subtitle: Text('${coffee.price}'),
+          subtitle: Text('${coffee.price}${coffee.currency} '),
           leading: Image.asset(coffee.imagePath),
           trailing: IconButton(
             icon: icon,

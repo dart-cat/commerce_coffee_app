@@ -36,6 +36,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_nav_bar: ^5.0.6
+  pretty_animated_buttons: ^0.0.1
+  google_fonts: ^5.1.0
   provider : 
 
 dev_dependencies:

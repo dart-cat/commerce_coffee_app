@@ -1,9 +1,11 @@
 import 'package:coffee_app/components/coffee_tile.dart';
+import 'package:coffee_app/const.dart';
 import 'package:coffee_app/models/coffee.dart';
 import 'package:coffee_app/models/coffee_shop.dart';
 import 'package:coffee_app/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -30,7 +32,7 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         builder: (context) {
-          return Container(
+          return SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.8,
             child: Padding(
@@ -55,21 +57,45 @@ class _CartPageState extends State<CartPage> {
                       )
                     ],
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Delivery time')),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Payment option')),
-                  ),
+                    child: Center(
+                      child: PrettyShadowButton(
+                        bgColor: Colors.white,
+                        icon: Icons.accessible_forward_outlined,
+                        foregroundColor: Colors.black,
+                        shadowColor: backgrdelivbutton,
+                        label: '       Arrival Time at the cafe         ',
+                        onPressed: () {},
+                      ),
+                    ),),
+
+                     Padding(
+                       padding: const EdgeInsets.only(top: 20),
+                       child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child:Center(
+                          child: PrettyShadowButton(
+                            bgColor: Colors.white,
+                            icon: Icons.accessible_forward_outlined,
+                            foregroundColor: Colors.black,
+                            shadowColor: backgrpaymentbutton,
+                            label: '          Payment Manager            ',
+                            onPressed: () {},
+                          ),
+                        ),
+                    ),
+                     ),
+
                   SizedBox(height: MediaQuery.of(context).size.height / 2),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Apple Pay')),
+                      child: const Text('                       Apple Gay                   '),
+                        onPressed: () {},
+
+
+                    ),
                   ),
                 ],
               ),
