@@ -35,11 +35,6 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final height = size.height;
-    if (size.height > 600) {
-      final height = size.height * 0.3;
-    } else {
-      final height = size.height * 0.4;
-    }
     return Scaffold(
       backgroundColor: Colors.brown[300],
       appBar: AppBar(
@@ -62,9 +57,8 @@ class _DetailScreenState extends State<DetailScreen> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(
-                        top: size.height > 600
-                            ? size.height * 0.3
-                            : size.height * 0.4),
+                      top: size.height > 600 ? height * 0.3 : height * 0.4,
+                    ),
                     padding: EdgeInsets.only(
                       top: size.height * 0.15,
                       left: 20.0,

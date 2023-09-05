@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,6 +40,7 @@ dependencies:
   pretty_animated_buttons: ^0.0.1
   google_fonts: ^5.1.0
   provider : 
+
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +59,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
