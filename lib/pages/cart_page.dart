@@ -4,8 +4,8 @@ import 'package:coffee_app/models/coffee.dart';
 import 'package:coffee_app/models/coffee_shop.dart';
 import 'package:coffee_app/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:provider/provider.dart';
-import 'package:pretty_animated_buttons/pretty_animated_buttons.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -60,41 +60,67 @@ class _CartPageState extends State<CartPage> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Center(
-                      child: PrettyShadowButton(
-                        bgColor: Colors.white,
-                        icon: Icons.accessible_forward_outlined,
-                        foregroundColor: Colors.black,
-                        shadowColor: backgrdelivbutton,
-                        label: '       Arrival Time at the cafe         ',
-                        onPressed: () {},
+                      child: AnimatedButton(
+                        onPress: () {},
+                        height: 50,
+                        width: 300,
+                        text: 'Delivery Time',
+                        gradient: LinearGradient(colors: [
+                          gradientbuttoncolor4,
+                          gradientbuttoncolor3
+                        ]),
+                        selectedGradientColor: LinearGradient(colors: [
+                          gradientbuttoncolor2,
+                          gradientbuttoncolor1
+                        ]),
+                        isReverse: true,
+                        borderRadius: 20,
+                        selectedTextColor: Colors.black,
+                        transitionType: TransitionType.LEFT_CENTER_ROUNDER,
+                        borderColor: Colors.white,
+                        borderWidth: 1,
                       ),
-                    ),),
-
-                     Padding(
-                       padding: const EdgeInsets.only(top: 20),
-                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child:Center(
-                          child: PrettyShadowButton(
-                            bgColor: Colors.white,
-                            icon: Icons.accessible_forward_outlined,
-                            foregroundColor: Colors.black,
-                            shadowColor: backgrpaymentbutton,
-                            label: '          Payment Manager            ',
-                            onPressed: () {},
-                          ),
-                        ),
                     ),
-                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: AnimatedButton(
+                          onPress: () {},
+                          height: 50,
+                          width: 300,
+                          text: 'Payment Manager',
+                          gradient: LinearGradient(colors: [
+                            gradientbuttoncolor4,
+                            gradientbuttoncolor3
+                          ]),
+                          selectedGradientColor: LinearGradient(colors: [
+                            gradientbuttoncolor2,
+                            gradientbuttoncolor1
+                          ]),
+                          isReverse: true,
+                          borderRadius: 20,
+                          selectedTextColor: Colors.black,
+                          transitionType: TransitionType.LEFT_CENTER_ROUNDER,
+                          borderColor: Colors.white,
+                          borderWidth: 1,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height / 2,
+                  //вот сюда нужно вставить детали заказа(выбранное время и выбранный платежный метод)
 
-                  SizedBox(height: MediaQuery.of(context).size.height / 2),
+                  
+                  ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                      child: const Text('                       Apple Gay                   '),
-                        onPressed: () {},
-
-
+                      child: const Text(
+                          '                       Apple Gay                   '),
+                      onPressed: () {},
                     ),
                   ),
                 ],
