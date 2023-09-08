@@ -40,7 +40,7 @@ class _DetailScreenState extends State<DetailScreen>
     return Scaffold(
       backgroundColor: Colors.brown[300],
       appBar: AppBar(
-        backgroundColor: Colors.brown[300],
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
