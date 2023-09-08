@@ -8,7 +8,7 @@ class TimePickerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
-      body: Center(
+      body: const Center(
         child: TimePicker(), // Используйте ваш TimePicker здесь
       ),
     );
