@@ -1,4 +1,6 @@
+import 'package:coffee_app/components/TimePicker.dart';
 import 'package:coffee_app/components/coffee_tile.dart';
+import 'package:coffee_app/components/timepicker_screen.dart';
 import 'package:coffee_app/const.dart';
 import 'package:coffee_app/models/coffee.dart';
 import 'package:coffee_app/models/coffee_shop.dart';
@@ -61,7 +63,13 @@ class _CartPageState extends State<CartPage> {
                     width: MediaQuery.of(context).size.width,
                     child: Center(
                       child: AnimatedButton(
-                        onPress: () {},
+                        onPress: () {
+                          print('Delivery Time button pressed');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TimePickerScreen()));
+                        },
                         height: 50,
                         width: 300,
                         text: 'Delivery Time',
@@ -110,10 +118,9 @@ class _CartPageState extends State<CartPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height / 2,
-                  //вот сюда нужно вставить детали заказа(выбранное время и выбранный платежный метод)
-
-                  
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 2,
+                    //вот сюда нужно вставить детали заказа(выбранное время и выбранный платежный метод)
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
