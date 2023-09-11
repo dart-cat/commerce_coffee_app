@@ -5,9 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(statusBarColor: Colors.transparent,));
   runApp(const CofeeApp());
+  
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
 }
 
 class CofeeApp extends StatelessWidget {

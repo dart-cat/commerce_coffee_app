@@ -1,8 +1,11 @@
 import 'package:coffee_app/components/coffee_tile.dart';
+import 'package:coffee_app/components/TimePicker/timepicker_screen.dart';
+import 'package:coffee_app/const.dart';
 import 'package:coffee_app/models/coffee.dart';
 import 'package:coffee_app/models/coffee_shop.dart';
 import 'package:coffee_app/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
@@ -30,7 +33,7 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         builder: (context) {
-          return Container(
+          return SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.8,
             child: Padding(
@@ -55,21 +58,76 @@ class _CartPageState extends State<CartPage> {
                       )
                     ],
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Delivery time')),
+                    child: Center(
+                      child: AnimatedButton(
+                        onPress: () {
+                          print('Delivery Time button pressed');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const TimePickerScreen()));
+                        },
+                        height: 50,
+                        width: 300,
+                        text: 'Delivery Time',
+                        gradient: LinearGradient(colors: [
+                          gradientbuttoncolor4,
+                          gradientbuttoncolor3
+                        ]),
+                        selectedGradientColor: LinearGradient(colors: [
+                          gradientbuttoncolor2,
+                          gradientbuttoncolor1
+                        ]),
+                        isReverse: true,
+                        borderRadius: 20,
+                        selectedTextColor: Colors.black,
+                        transitionType: TransitionType.LEFT_CENTER_ROUNDER,
+                        borderColor: Colors.white,
+                        borderWidth: 1,
+                      ),
+                    ),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Payment option')),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: AnimatedButton(
+                          onPress: () {},
+                          height: 50,
+                          width: 300,
+                          text: 'Payment Manager',
+                          gradient: LinearGradient(colors: [
+                            gradientbuttoncolor4,
+                            gradientbuttoncolor3
+                          ]),
+                          selectedGradientColor: LinearGradient(colors: [
+                            gradientbuttoncolor2,
+                            gradientbuttoncolor1
+                          ]),
+                          isReverse: true,
+                          borderRadius: 20,
+                          selectedTextColor: Colors.black,
+                          transitionType: TransitionType.LEFT_CENTER_ROUNDER,
+                          borderColor: Colors.white,
+                          borderWidth: 1,
+                        ),
+                      ),
+                    ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height / 2),
-                  Container(
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 2,
+                    //вот сюда нужно вставить детали заказа(выбранное время и выбранный платежный метод)
+                  ),
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Apple Pay')),
+                      child: const Text(
+                          '                       Apple Gay                   '),
+                      onPressed: () {},
+                    ),
                   ),
                 ],
               ),
