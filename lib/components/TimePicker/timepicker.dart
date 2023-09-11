@@ -1,6 +1,6 @@
-import 'package:coffee_app/components/am_pm.dart';
-import 'package:coffee_app/components/hours.dart';
-import 'package:coffee_app/components/minutes.dart';
+import 'package:coffee_app/components/TimePicker/am_pm.dart';
+import 'package:coffee_app/components/TimePicker/hours.dart';
+import 'package:coffee_app/components/TimePicker/minutes.dart';
 import 'package:flutter/material.dart';
 
 class TimePicker extends StatelessWidget {

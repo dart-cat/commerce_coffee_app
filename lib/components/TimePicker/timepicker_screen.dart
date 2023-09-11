@@ -1,4 +1,4 @@
-import 'package:coffee_app/components/timepicker.dart';
+import 'package:coffee_app/components/TimePicker/timepicker.dart';
 import 'package:flutter/material.dart';
 
 class TimePickerScreen extends StatelessWidget {

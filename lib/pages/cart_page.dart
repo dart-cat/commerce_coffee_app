@@ -1,5 +1,5 @@
 import 'package:coffee_app/components/coffee_tile.dart';
-import 'package:coffee_app/components/timepicker_screen.dart';
+import 'package:coffee_app/components/TimePicker/timepicker_screen.dart';
 import 'package:coffee_app/const.dart';
 import 'package:coffee_app/models/coffee.dart';
 import 'package:coffee_app/models/coffee_shop.dart';

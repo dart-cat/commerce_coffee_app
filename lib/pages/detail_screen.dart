@@ -1,7 +1,7 @@
 import 'package:animated_background/animated_background.dart';
-import 'package:coffee_app/components/counter.dart';
-import 'package:coffee_app/components/dropdown.dart';
-import 'package:coffee_app/components/small_medium_large.dart';
+import 'package:coffee_app/components/Coffee_detail/counter.dart';
+import 'package:coffee_app/components/Coffee_detail/dropdown.dart';
+import 'package:coffee_app/components/Coffee_detail/small_medium_large.dart';
 import 'package:coffee_app/models/coffee.dart';
 import 'package:coffee_app/models/coffee_shop.dart';
 import 'package:flutter/material.dart';
