@@ -41,7 +41,12 @@ dependencies:
   google_fonts: ^5.1.0
   flutter_animated_button: ^2.0.3
   animated_background: ^2.0.0
-  provider : 
+  provider :
+  firebase_auth: ^4.9.0
+  firebase_core: ^2.15.1
+  email_validator:
+  shared_preferences: ^2.2.0
+  cloud_firestore: ^4.8.4
 
 
 dev_dependencies:

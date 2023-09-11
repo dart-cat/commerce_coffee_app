@@ -1,6 +1,7 @@
 import 'package:coffee_app/components/bottom_nav_bar.dart';
 import 'package:coffee_app/const.dart';
 import 'package:coffee_app/pages/shop_page.dart';
+import 'package:coffee_app/services/firebase_streem.dart';
 import 'package:flutter/material.dart';
 
 import 'cart_page.dart';
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
 // pages
   final List<Widget> _pages = [
     //shop page
-    const ShopPage(),
+    const FirebaseStream(),
 
     //cart page
     const CartPage()
