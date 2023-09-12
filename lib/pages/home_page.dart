@@ -1,5 +1,6 @@
 import 'package:coffee_app/components/bottom_nav_bar.dart';
 import 'package:coffee_app/const.dart';
+import 'package:coffee_app/pages/Login/Register/welcome_screen.dart';
 import 'package:coffee_app/pages/shop_page.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,9 @@ class _HomePageState extends State<HomePage> {
     const ShopPage(),
 
     //cart page
-    const CartPage()
+    const CartPage(),
+
+    const WelcomeScreen(),
   ];
 
   @override
